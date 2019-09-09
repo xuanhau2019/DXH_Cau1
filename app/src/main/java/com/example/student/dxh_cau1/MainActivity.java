@@ -1,5 +1,5 @@
 package com.example.student.dxh_cau1;
-
+import android.app.Dialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -9,10 +9,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
+    Dialog dialog;
 EditText edtTaiKhoan,edtMatKhau;
 TextView txtThongBao;
 CheckBox checkBoxLuuThongTin;
-Button buttonDangNhap;
+Button buttonDangNhap,buttonThoat;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,6 +23,7 @@ Button buttonDangNhap;
         edtMatKhau=findViewById(R.id.edtMatKhau);
         txtThongBao=findViewById(R.id.txtThongBao);
         checkBoxLuuThongTin=findViewById(R.id.checkBoxLuuThongTin);
+        buttonThoat=findViewById(R.id.buttonThoat);
         buttonDangNhap=findViewById(R.id.buttonDangNhap);
 
         buttonDangNhap.setOnClickListener(new View.OnClickListener() {
@@ -36,5 +38,18 @@ Button buttonDangNhap;
             }
         });
 
+        buttonThoat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showDialog();
+            }
+        });
+
+    }
+    public void showDialog() {
+        dialog = new Dialog(MainActivity.this);
+        dialog.setTitle("Thông Báo");
+        dialog.setContentView(R.layout.dialog);
+        dialog.show();
     }
 }
