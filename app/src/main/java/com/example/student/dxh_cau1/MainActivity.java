@@ -1,5 +1,7 @@
 package com.example.student.dxh_cau1;
+import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -9,7 +11,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
-    Dialog dialog;
+    AlertDialog.Builder dialog;
 EditText edtTaiKhoan,edtMatKhau;
 TextView txtThongBao;
 CheckBox checkBoxLuuThongTin;
@@ -47,9 +49,25 @@ Button buttonDangNhap,buttonThoat;
 
     }
     public void showDialog() {
-        dialog = new Dialog(MainActivity.this);
+        dialog = new AlertDialog.Builder(MainActivity.this);
         dialog.setTitle("Thông Báo");
-        dialog.setContentView(R.layout.dialog);
+        dialog.setMessage("Ban co muon thoat khong?");
+
+        dialog.setNegativeButton("Có", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                finish();
+            }
+        });
+
+        dialog.setPositiveButton("Không", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        });
+
+        //dialog.setContentView(R.layout.dialog);
         dialog.show();
     }
 }
